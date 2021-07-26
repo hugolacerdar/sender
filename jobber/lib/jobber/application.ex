@@ -12,6 +12,7 @@ defmodule Jobber.Application do
     ]
 
     children = [
+      {Registry, keys: :unique, name: Jobber.JobRegistry},
       {DynamicSupervisor, job_runner_config}
     ]
     opts = [strategy: :one_for_one, name: Jobber.Supervisor]
